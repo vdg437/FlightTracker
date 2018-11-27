@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A5D25EE9E810D69319D7EB2 /* Pods_PlaneTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E63AF34F49665CCF61DE63 /* Pods_PlaneTracker.framework */; };
 		6D80ADB021AAE6B500FA0450 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D80ADAF21AAE6B500FA0450 /* AppDelegate.swift */; };
 		6D80ADB221AAE6B500FA0450 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D80ADB121AAE6B500FA0450 /* ViewController.swift */; };
 		6D80ADB521AAE6B500FA0450 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D80ADB321AAE6B500FA0450 /* Main.storyboard */; };
 		6D80ADB821AAE6B500FA0450 /* PlaneTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D80ADB621AAE6B500FA0450 /* PlaneTracker.xcdatamodeld */; };
 		6D80ADBA21AAE6B600FA0450 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D80ADB921AAE6B600FA0450 /* Assets.xcassets */; };
 		6D80ADBD21AAE6B600FA0450 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D80ADBB21AAE6B600FA0450 /* LaunchScreen.storyboard */; };
+		6DE5086221AAE7A70063CBDF /* FindPlaneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5086121AAE7A70063CBDF /* FindPlaneVC.swift */; };
+		6DE5086421AAEB1C0063CBDF /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5086321AAEB1C0063CBDF /* Plane.swift */; };
+		6DED600521ABE811007C2861 /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DED600421ABE811007C2861 /* Airport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3DAA3B73040DA80DFB390887 /* Pods-PlaneTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaneTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlaneTracker/Pods-PlaneTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		46F3ABB5121FC19A6AED4CA8 /* Pods-PlaneTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaneTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlaneTracker/Pods-PlaneTracker.release.xcconfig"; sourceTree = "<group>"; };
 		6D80ADAC21AAE6B500FA0450 /* PlaneTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaneTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D80ADAF21AAE6B500FA0450 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D80ADB121AAE6B500FA0450 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +30,10 @@
 		6D80ADB921AAE6B600FA0450 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D80ADBC21AAE6B600FA0450 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D80ADBE21AAE6B600FA0450 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DE5086121AAE7A70063CBDF /* FindPlaneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPlaneVC.swift; sourceTree = "<group>"; };
+		6DE5086321AAEB1C0063CBDF /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		6DED600421ABE811007C2861 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
+		70E63AF34F49665CCF61DE63 /* Pods_PlaneTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlaneTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A5D25EE9E810D69319D7EB2 /* Pods_PlaneTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		207BA172D2BAD8D026C29C56 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3DAA3B73040DA80DFB390887 /* Pods-PlaneTracker.debug.xcconfig */,
+				46F3ABB5121FC19A6AED4CA8 /* Pods-PlaneTracker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		21F5F58371C60C1EAF70DE47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70E63AF34F49665CCF61DE63 /* Pods_PlaneTracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6D80ADA321AAE6B500FA0450 = {
 			isa = PBXGroup;
 			children = (
 				6D80ADAE21AAE6B500FA0450 /* PlaneTracker */,
 				6D80ADAD21AAE6B500FA0450 /* Products */,
+				207BA172D2BAD8D026C29C56 /* Pods */,
+				21F5F58371C60C1EAF70DE47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +86,8 @@
 		6D80ADAE21AAE6B500FA0450 /* PlaneTracker */ = {
 			isa = PBXGroup;
 			children = (
+				6DE5086021AAE7730063CBDF /* Model */,
+				6DE5085F21AAE7310063CBDF /* Controller */,
 				6D80ADAF21AAE6B500FA0450 /* AppDelegate.swift */,
 				6D80ADB121AAE6B500FA0450 /* ViewController.swift */,
 				6D80ADB321AAE6B500FA0450 /* Main.storyboard */,
@@ -67,6 +99,23 @@
 			path = PlaneTracker;
 			sourceTree = "<group>";
 		};
+		6DE5085F21AAE7310063CBDF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6DE5086121AAE7A70063CBDF /* FindPlaneVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6DE5086021AAE7730063CBDF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6DE5086321AAEB1C0063CBDF /* Plane.swift */,
+				6DED600421ABE811007C2861 /* Airport.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D80ADC121AAE6B600FA0450 /* Build configuration list for PBXNativeTarget "PlaneTracker" */;
 			buildPhases = (
+				1402EC62F66A3CA87D341C68 /* [CP] Check Pods Manifest.lock */,
 				6D80ADA821AAE6B500FA0450 /* Sources */,
 				6D80ADA921AAE6B500FA0450 /* Frameworks */,
 				6D80ADAA21AAE6B500FA0450 /* Resources */,
+				0B3A586D9DA3693853F10C0F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,14 +184,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0B3A586D9DA3693853F10C0F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PlaneTracker/Pods-PlaneTracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlaneTracker/Pods-PlaneTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1402EC62F66A3CA87D341C68 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlaneTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6D80ADA821AAE6B500FA0450 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6D80ADB221AAE6B500FA0450 /* ViewController.swift in Sources */,
+				6DED600521ABE811007C2861 /* Airport.swift in Sources */,
 				6D80ADB821AAE6B500FA0450 /* PlaneTracker.xcdatamodeld in Sources */,
+				6DE5086221AAE7A70063CBDF /* FindPlaneVC.swift in Sources */,
 				6D80ADB021AAE6B500FA0450 /* AppDelegate.swift in Sources */,
+				6DE5086421AAEB1C0063CBDF /* Plane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,11 +387,13 @@
 		};
 		6D80ADC221AAE6B600FA0450 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DAA3B73040DA80DFB390887 /* Pods-PlaneTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9TLUZXT7T4;
 				INFOPLIST_FILE = PlaneTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,11 +407,13 @@
 		};
 		6D80ADC321AAE6B600FA0450 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46F3ABB5121FC19A6AED4CA8 /* Pods-PlaneTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9TLUZXT7T4;
 				INFOPLIST_FILE = PlaneTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
