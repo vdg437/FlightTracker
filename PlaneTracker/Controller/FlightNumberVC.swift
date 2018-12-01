@@ -25,6 +25,7 @@ class FlightNumberVCViewController: UIViewController {
     @IBOutlet weak var lblSpeed: UILabel!
     @IBOutlet weak var lblPlane: UILabel!
     @IBOutlet weak var lblAirline: UILabel!
+    @IBOutlet weak var imgArrow: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,10 @@ class FlightNumberVCViewController: UIViewController {
         specificPlanesUrl += flightNumber
         
         getFlights(url: specificPlanesUrl)
+        
+        
+        let images: [UIImage] = [#imageLiteral(resourceName: "arrow-1"), #imageLiteral(resourceName: "arrow-2"), #imageLiteral(resourceName: "arrow-3")]
+        imgArrow.image = UIImage.animatedImage(with: images, duration: 1)
     }
     
     // MARK: - Function
