@@ -50,7 +50,7 @@ class FlightNumberVCViewController: UIViewController {
                     self.lblStatus.text       = item["status"].string
                     self.lblSpeed.text        = item["speed"]["horizontal"].stringValue
                     self.lblPlane.text        = item["aircraft"]["icaoCode"].stringValue
-                    self.lblETA.text          = "Not Available" //item[""][""].stringValue
+                    self.lblETA.text          = "Not Available"
                     self.lblAirline.text      = item["airline"]["iataCode"].stringValue
                 }
             case .failure(let error):

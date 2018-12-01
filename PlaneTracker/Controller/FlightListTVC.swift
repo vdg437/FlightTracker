@@ -10,12 +10,19 @@ import UIKit
 
 class FlightListTVC: UITableViewController {
     
-    var airportList : [Airport] = []
+    var DepAirport : String!
+    var ArrAirport : String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let getFlightsWithDepArr = "http://aviation-edge.com/v2/public/flights?key=30feff-e974a7&depIata=\(DepAirport!)&arrIata=\(ArrAirport!)"
 
-        // Uncomment the following line to preserve selection between presentations
+        //Set View Title
+        self.title = "\(DepAirport!) -> \(ArrAirport!)"
+        
+        
+        // Preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -26,23 +33,23 @@ class FlightListTVC: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 5
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = "Test"
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

@@ -22,12 +22,16 @@ class FindPlaneVC: UIViewController {
     @IBAction func btnSearchFlights(_ sender: Any) {
         if((departingSearchTextField.text?.isEmpty)! || (arrivingSearchTextField.text?.isEmpty)!){
             if((flightNumberTextField.text?.isEmpty)!){
-                // Nothing inserted
+                // Nothing happens when nothing entered in textFields
             }else{
                 performSegue(withIdentifier: "segueToFlightNumberVC", sender: self)
             }
         }
+        if(departingSearchTextField.text != "" && arrivingSearchTextField.text != ""){
+            performSegue(withIdentifier: "segueToFlightListVC", sender: self)
+        }
     }
+    
     let specificPlanesUrl = "http://aviation-edge.com/v2/public/flights?key=30feff-e974a7"
     
     let allAirportsUrl = "https://aviation-edge.com/v2/public/airportDatabase?key=30feff-e974a7"
@@ -37,8 +41,9 @@ class FindPlaneVC: UIViewController {
         super.viewDidLoad()
         
         //Optimizing Search suggestions
-        departingSearchTextField.maxNumberOfResults = 2
-        arrivingSearchTextField.maxNumberOfResults = 2
+        departingSearchTextField.maxNumberOfResults = 3
+        arrivingSearchTextField.maxNumberOfResults = 3
+        
         
         // Loading Airports
         getAirport(url: allAirportsUrl)
@@ -68,11 +73,10 @@ class FindPlaneVC: UIViewController {
                 }
                 self.indicator.isHidden.toggle()
                 self.lblData.isHidden.toggle()
-                print(self.airportList[0].name!, self.airportList[0].iataCode!, self.airportList[0].country!)
                 
                 // Initializing Search suggestions
                 for(item):(Airport) in self.airportList{
-                    items.append(SearchTextFieldItem(title: item.name, subtitle: "\(item.country) - \(item.iataCode)"))
+                    items.append(SearchTextFieldItem(title: item.name, subtitle: "\(item.country!) - \(item.iataCode!)"))
                 }
                 self.departingSearchTextField.filterItems(items)
                 self.arrivingSearchTextField.filterItems(items)
@@ -89,7 +93,9 @@ class FindPlaneVC: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is FlightListTVC{
-            
+            let vc = segue.destination as? FlightListTVC
+            vc?.DepAirport = departingSearchTextField.text
+            vc?.ArrAirport = arrivingSearchTextField.text
         }
         
         if segue.destination is FlightNumberVCViewController{
