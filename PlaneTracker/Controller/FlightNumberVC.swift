@@ -14,8 +14,11 @@ import MapKit
 class FlightNumberVCViewController: UIViewController {
     
     var flightNumber : String! = nil
+    var updateTimer : Timer!
     var specificPlanesUrl = "https://aviation-edge.com/v2/public/flights?key=30feff-e974a7&flightIata="
     var airportUrl = "https://aviation-edge.com/v2/public/airportDatabase?key=30feff-e974a7&codeIataAirport="
+    var latitude : Double = 0
+    var longitude : Double = 0
     
     
     // MARK: - Outlet
@@ -33,11 +36,14 @@ class FlightNumberVCViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lblFlightNumber.text = flightNumber
-        specificPlanesUrl += flightNumber
+        //lblFlightNumber.text = flightNumber
+        //specificPlanesUrl += flightNumber
+        //getFlights(url: specificPlanesUrl)
         
-        getFlights(url: specificPlanesUrl)
         
+        updateTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { (Timer) in
+            //self.getFlights(url: self.specificPlanesUrl)
+        })
         
         let images: [UIImage] = [#imageLiteral(resourceName: "arrow-1"), #imageLiteral(resourceName: "arrow-2"), #imageLiteral(resourceName: "arrow-3")]
         imgArrow.image = UIImage.animatedImage(with: images, duration: 1)
@@ -47,6 +53,7 @@ class FlightNumberVCViewController: UIViewController {
     func getFlights(url: String) {
         var arrivalCode : String = ""
         var departureCode : String = ""
+        
         Alamofire.request(url).responseJSON { (response) in
             switch response.result {
             case .success(let value):
@@ -55,14 +62,21 @@ class FlightNumberVCViewController: UIViewController {
                 for (index,item):(String, JSON) in flightJson {
                     print(" Group: \(index) & Item: \(item)")
                     self.lblStatus.text       = item["status"].string
-                    self.lblSpeed.text        = String(round(item["speed"]["horizontal"].doubleValue*100)/100)+" km/h"
+                    self.lblSpeed.text        = String((item["speed"]["horizontal"].intValue))+" km/h"
                     self.lblPlane.text        = item["aircraft"]["icaoCode"].stringValue
                     self.lblETA.text          = "Not Available"
                     self.lblAirline.text      = item["airline"]["iataCode"].stringValue
                     arrivalCode               = item["arrival"]["iataCode"].string!
                     departureCode             = item["departure"]["iataCode"].string!
+                    self.longitude            = item["geography"]["longitude"].doubleValue
+                    self.latitude             = item["geography"]["latitude"].doubleValue
+                }
+                if(self.lblStatus.text == "en-route"){
+                    self.lblStatus.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+                    self.lblStatus.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                 }
                 self.getFlightAirportInfo(url1: arrivalCode, url2: departureCode)
+                self.setPlanePosition()
                 
             case .failure(let error):
                 let alert = UIAlertController(title: "Internet connection failed", message: "We could not establish a connection to the server.", preferredStyle: .alert)
@@ -117,6 +131,12 @@ class FlightNumberVCViewController: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    func setPlanePosition(){
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
+        myMap.addAnnotation(annotation)
     }
     
     

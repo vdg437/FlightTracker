@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import SearchTextField
 
-class FindPlaneVC: UIViewController {
+class FindPlaneVC: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var lblData: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
@@ -39,6 +39,7 @@ class FindPlaneVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        flightNumberTextField.delegate = self
         
         //Optimizing Search suggestions
         departingSearchTextField.maxNumberOfResults = 3
@@ -47,6 +48,7 @@ class FindPlaneVC: UIViewController {
         
         // Loading Airports
         getAirport(url: allAirportsUrl)
+        
     }
     
     // MARK: - Functions
@@ -55,6 +57,7 @@ class FindPlaneVC: UIViewController {
     @IBAction func unwindToFindPlaneVC(_ unwindSegue: UIStoryboardSegue) {
         // Use data from the view controller which initiated the unwind segue
     }
+    
     
     // Requesting all available airports, returns json
     func getAirport(url: String) {
@@ -89,6 +92,11 @@ class FindPlaneVC: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
     // MARK: - Navigation
