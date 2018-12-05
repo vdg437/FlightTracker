@@ -69,14 +69,14 @@ class FindPlaneVC: UIViewController {
                     let iataCode    = item["codeIataAirport"].string
                     let country     = item["nameCountry"].string
                     
-                    self.airportList.append(Airport(name: name!, iataCode: iataCode!, country: country!))
+                    self.airportList.append(Airport(name: name, iataCode: iataCode, country: country))
                 }
                 self.indicator.isHidden.toggle()
                 self.lblData.isHidden.toggle()
                 
                 // Initializing Search suggestions
                 for(item):(Airport) in self.airportList{
-                    items.append(SearchTextFieldItem(title: item.name, subtitle: "\(item.country!) - \(item.iataCode!)"))
+                    items.append(SearchTextFieldItem(title: item.name, subtitle: "\(item.country) - \(item.iataCode)"))
                 }
                 self.departingSearchTextField.filterItems(items)
                 self.arrivingSearchTextField.filterItems(items)
@@ -85,6 +85,7 @@ class FindPlaneVC: UIViewController {
                 let alert = UIAlertController(title: "Internet connection failed", message: "We could not establish a connection to the server.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
                 self.present(alert, animated: true)
+                self.lblData.text = "Trying to connect..."
                 print(error)
             }
         }
