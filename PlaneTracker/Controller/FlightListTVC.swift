@@ -16,10 +16,10 @@ class FlightListTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let getFlightsWithDepArr = "http://aviation-edge.com/v2/public/flights?key=30feff-e974a7&depIata=\(DepAirport!)&arrIata=\(ArrAirport!)"
+//        let getFlightsWithDepArr = "http://aviation-edge.com/v2/public/flights?key=30feff-e974a7&depIata=\(DepAirport!)&arrIata=\(ArrAirport!)"
 
         //Set View Title
-        self.title = "\(DepAirport!) -> \(ArrAirport!)"
+       // self.title = "\(DepAirport!) -> \(ArrAirport!)"
         
         
         // Preserve selection between presentations

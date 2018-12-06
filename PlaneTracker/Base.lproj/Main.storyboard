@@ -12,7 +12,9 @@
         <!--PageVC-->
         <scene sceneID="JZL-on-Izc">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="7LH-q4-Ovg" customClass="PageVC" customModule="PlaneTracker" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="7LH-q4-Ovg" customClass="PageVC" customModule="PlaneTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trn-SV-Nge" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2092" y="791"/>
@@ -319,15 +321,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLC-1F-gBY">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="429"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="429" id="Xwc-gF-T7u"/>
+                                </constraints>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YLC-1F-gBY" firstAttribute="top" secondItem="Cxi-nc-Hel" secondAttribute="top" id="6VL-W9-7bz"/>
-                            <constraint firstItem="YLC-1F-gBY" firstAttribute="leading" secondItem="Cxi-nc-Hel" secondAttribute="leading" id="7de-kV-H08"/>
-                            <constraint firstItem="Cxi-nc-Hel" firstAttribute="bottom" secondItem="YLC-1F-gBY" secondAttribute="bottom" id="ZdE-lc-NG1"/>
-                            <constraint firstItem="Cxi-nc-Hel" firstAttribute="trailing" secondItem="YLC-1F-gBY" secondAttribute="trailing" id="Zfu-Wi-JHk"/>
+                            <constraint firstItem="YLC-1F-gBY" firstAttribute="top" secondItem="Cxi-nc-Hel" secondAttribute="top" id="SbM-1F-kg4"/>
+                            <constraint firstItem="YLC-1F-gBY" firstAttribute="trailing" secondItem="Cxi-nc-Hel" secondAttribute="trailing" id="vZW-t9-ryZ"/>
+                            <constraint firstItem="YLC-1F-gBY" firstAttribute="leading" secondItem="Cxi-nc-Hel" secondAttribute="leading" id="wgw-c1-UcI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cxi-nc-Hel"/>
                     </view>
@@ -337,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCZ-99-Afx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="902"/>
+            <point key="canvasLocation" x="517.60000000000002" y="901.79910044977521"/>
         </scene>
     </scenes>
     <resources>
