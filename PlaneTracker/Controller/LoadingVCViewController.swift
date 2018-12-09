@@ -46,8 +46,11 @@ class LoadingVCViewController: UIViewController {
                     let name        = item["nameAirport"].string!
                     let iataCode    = item["codeIataAirport"].string!
                     let country     = item["nameCountry"].string!
+                    let latitude    = item["latitudeAirport"]
+                    let longitude   = item["longitudeAirport"]
+                    let isoCode     = item["codeIso2Country"]
                     
-                    self.airportList.append(Airport(name: name, iataCode: iataCode, country: country))
+                    
                 }
                 
             case .failure(let error):

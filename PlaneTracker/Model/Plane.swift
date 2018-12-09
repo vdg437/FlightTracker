@@ -17,11 +17,11 @@ class Plane{
     var flightAirline: String!
     var status: String!
     var speed:  Int!
-    var latitude: Int!
-    var longitude: Int!
-    var altitude: Int!
+    var latitude: Float!
+    var longitude: Float!
+    var altitude: Float!
     
-    init(depair : String, arrair : String, flightNumber : String, flightAirline : String, status : String, speed : Int, latitude : Int, longitude : Int, altitude : Int){
+    init(depair : String, arrair : String, flightNumber : String, flightAirline : String, status : String, speed : Int, latitude : Float, longitude : Float, altitude : Float){
         self.depair         = depair
         self.arrair         = arrair
         self.flightNumber   = flightNumber

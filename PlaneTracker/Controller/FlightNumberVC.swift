@@ -16,7 +16,8 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
     
     var planes = [Plane]()
     var airports = [Airport]()
-    var planesUrl = "https://aviation-edge.com/v2/public/flights?key=30feff-e974a7&limit=100"
+    var annotations = [MKPointAnnotation]()
+    var planesUrl = "https://aviation-edge.com/v2/public/flights?key=30feff-e974a7&limit=10000"
     var airportUrl = "https://aviation-edge.com/v2/public/airportDatabase?key=30feff-e974a7&codeIataAirport="
     var locationManager = CLLocationManager()
     
@@ -53,7 +54,6 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
             locationManager.requestWhenInUseAuthorization()
         }
         
-        
         //        updateTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { (Timer) in
         //self.getFlights(url: self.specificPlanesUrl)
         //})
@@ -70,7 +70,6 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
             switch response.result {
             case .success(let value):
                 let flightsJson = JSON(value)
-                print(flightsJson)
                 var i = 0
                 for (index ,item):(String, JSON) in flightsJson {
                     if(index == String(i)){
@@ -80,11 +79,10 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
                         let flightAirline   = item["airline"]["iataCode"].string!
                         let status          = item["status"].string!
                         let speed           = item["speed"]["vertical"].intValue
-                        let latitude        = item["geography"]["latitude"].intValue
-                        let longitude       = item["geography"]["longitude"].intValue
-                        let altitude        = item["geography"]["altitude"].intValue
+                        let latitude        = item["geography"]["latitude"].floatValue
+                        let longitude       = item["geography"]["longitude"].floatValue
+                        let altitude        = item["geography"]["altitude"].floatValue
                         
-                        print(flightNumber)
                         let plane = Plane(depair: depair, arrair: arrair, flightNumber: flightNumber, flightAirline: flightAirline, status: status, speed: speed, latitude: latitude, longitude: longitude, altitude: altitude)
                         
                         self.planes.append(plane)
@@ -105,17 +103,35 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
         let arrivalCode = selectedFlight.arrair!
         let departureCode = selectedFlight.depair!
         
-        if(self.lblStatus.text == "en-route"){
+        lblFlightNumber.text = selectedFlight.flightNumber!
+        lblSpeed.text = String(selectedFlight.speed)
+        lblAirline.text = selectedFlight.flightAirline
+        
+        
+        lblStatus.text = selectedFlight.status
+        if(selectedFlight.status == "en-route"){
+            self.lblStatus.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+            self.lblStatus.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        }else if(selectedFlight.status == "started"){
             self.lblStatus.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
             self.lblStatus.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        }else if(selectedFlight.status == "landed"){
+            self.lblStatus.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+            self.lblStatus.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        }else if(selectedFlight.status == "unknown"){
+            self.lblStatus.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+            self.lblStatus.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        }else if(selectedFlight.status == "crashed"){
+            self.lblStatus.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            self.lblStatus.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
-        getFlightAirportInfo(url1: arrivalCode, url2: departureCode)
+        getFlightAirportInfo(arrivalAirport: arrivalCode, departureAirport: departureCode)
     }
     
     
-    func getFlightAirportInfo(url1: String, url2: String){
-        getArrivalAirport(url: (airportUrl+url1))
-        getDestinationAirport(url: (airportUrl+url2))
+    func getFlightAirportInfo(arrivalAirport: String, departureAirport: String){
+        getArrivalAirport(url: (airportUrl+arrivalAirport))
+        getDepartureAirport(url: (airportUrl+departureAirport))
     }
     
     func getArrivalAirport(url: String){
@@ -126,6 +142,16 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
                 let airportJson = JSON(value)
                 
                 for (_,item):(String, JSON) in airportJson {
+                    let nameAirport = item["nameAirport"].string
+                    let codeIata = item["codeIataAirport"].string
+                    let latitude = item["latitudeAirport"].doubleValue
+                    let longitude = item["longitudeAirport"].doubleValue
+                    let country = item["nameCountry"].string
+                    let isoCode = item["codeIso2Country"].string
+                    
+                    if(nameAirport != nil  && codeIata != nil && country != nil && isoCode != nil){
+                        self.airports.append(Airport(name: nameAirport!, iataCode: codeIata!, country: country!, latitude: latitude, longitude: longitude, isoCode: isoCode!))
+                    }
                     self.lblArrival.text = item["nameAirport"].string
                 }
             case .failure(let error):
@@ -137,7 +163,7 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
         }
     }
     
-    func getDestinationAirport(url: String){
+    func getDepartureAirport(url: String){
         print("+++++++++++++ Departure : \(url)")
         Alamofire.request(url).responseJSON { (response) in
             switch response.result {
@@ -161,12 +187,13 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
         annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(plane.latitude), longitude: CLLocationDegrees(plane.longitude))
         annotation.title = plane.flightNumber
         annotation.subtitle = ("\(plane.flightAirline!) - \(plane.status!)")
+        annotations.append(annotation)
         myMap.addAnnotation(annotation)
     }
     
-    func handleMenu(){
+    func handleMenu(plane : Plane){
         //show menu
-        buildInfoBox(selectedFlight: planes[1])
+        buildInfoBox(selectedFlight: plane)
         UIView.animate(withDuration: 0.5) {
             self.flightInformationMenu.alpha = 1
         }
@@ -174,7 +201,6 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
     
     func unhandleMenu(){
         //show menu
-        buildInfoBox(selectedFlight: planes[1])
         UIView.animate(withDuration: 0.5) {
             self.flightInformationMenu.alpha = 0
         }
@@ -184,17 +210,70 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         searchBar.resignFirstResponder()
-        handleMenu()
+        //handleMenu()
         return true
     }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        handleMenu()
+    func getSelectedPlane(flightNumber : String, longitude : Float, latitude : Float) -> Plane?{
+        var fetchedPlane : Plane?
+        planes.forEach {if($0.flightNumber == flightNumber){
+            fetchedPlane = $0
+            }}
+        return fetchedPlane
+    }
+    
+    func showRoute(plane : Plane){
+        var locations = [CLLocationCoordinate2D]()
         
+        for airport in airports{
+            print(airports.count)
+        }
+        
+//        airports.forEach {
+//            print($0)
+//            print("Plane iataCode: \($0.iataCode) - \(plane.arrair)")
+//            if($0.iataCode == plane.arrair){
+//            locations.append(CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude))
+//            print("COORDINATES ROUTE Arrival: \($0.longitude) - \($0.latitude)")
+//            }
+//        }
+        
+        airports.forEach {if($0.iataCode == plane.depair){
+            locations.append(CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude))
+            print("COORDINATES ROUTE Departing: \($0.longitude) - \($0.latitude)")
+            }}
+        
+        
+        
+        let polyline = MKPolyline(coordinates: locations, count: locations.count)
+        myMap.addOverlay(polyline)
+    }
+    
+    // MARK: - Map controlls
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let title = view.annotation!.title!
+        let longitude = view.annotation!.coordinate.longitude
+        let latitude = view.annotation!.coordinate.latitude
+        
+        let plane = getSelectedPlane(flightNumber: title!, longitude: Float(longitude), latitude: Float(latitude))
+        handleMenu(plane: plane!)
+        
+        showRoute(plane: plane!)
+        
+        let annotationsToRemove = myMap.annotations.filter { $0 !== view.annotation }
+        
+        for annotation in annotationsToRemove{
+            mapView.view(for: annotation)?.isHidden = true
+        }
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         unhandleMenu()
+        let annotationsToShow = myMap.annotations.filter { $0 !== view.annotation }
+        for annotation in annotationsToShow{
+            mapView.view(for: annotation)?.isHidden = false
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -206,6 +285,26 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
         
         locationManager.stopUpdatingLocation()
     }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolyline{
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = UIColor.red.withAlphaComponent(0.5)
+            polylineRenderer.lineWidth = 5
+            polylineRenderer.fillColor = UIColor.red.withAlphaComponent(0.5)
+            return polylineRenderer
+        }
+        return MKPolylineRenderer(overlay: overlay)
+    }
+    
+//    func reloadAnnotations(){
+//        let allAnnotations = self.myMap.annotations
+//        self.myMap.removeAnnotations(allAnnotations)
+//
+//        for annotation in allAnnotations {
+//            self.mapView.addAnnotation(annotation)
+//        }
+//    }
     
     
     /*

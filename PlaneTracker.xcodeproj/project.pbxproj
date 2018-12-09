@@ -102,7 +102,6 @@
 				6D80ADB921AAE6B600FA0450 /* Assets.xcassets */,
 				6D80ADBB21AAE6B600FA0450 /* LaunchScreen.storyboard */,
 				6D80ADBE21AAE6B600FA0450 /* Info.plist */,
-				6D80ADB621AAE6B500FA0450 /* PlaneTracker.xcdatamodeld */,
 			);
 			path = PlaneTracker;
 			sourceTree = "<group>";
@@ -122,6 +121,7 @@
 		6DE5086021AAE7730063CBDF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6D80ADB621AAE6B500FA0450 /* PlaneTracker.xcdatamodeld */,
 				6DE5086321AAEB1C0063CBDF /* Plane.swift */,
 				6DED600421ABE811007C2861 /* Airport.swift */,
 			);
