@@ -17,128 +17,25 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trn-SV-Nge" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2092" y="791"/>
+            <point key="canvasLocation" x="-994" y="1631"/>
         </scene>
-        <!--FindPlaneVC-->
-        <scene sceneID="tne-QT-ifu">
+        <!--LoadingVC View Controller-->
+        <scene sceneID="cNR-xF-4pB">
             <objects>
-                <viewController title="FindPlaneVC" id="BYZ-38-t0r" customClass="FindPlaneVC" customModule="PlaneTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="3Vy-X3-3kP" customClass="LoadingVCViewController" customModule="PlaneTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C8y-qs-K7R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m82-AZ-U5M">
-                                <rect key="frame" x="0.0" y="1" width="375" height="671"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="airplane" translatesAutoresizingMaskIntoConstraints="NO" id="btx-le-3lf">
-                                        <rect key="frame" x="0.0" y="-8" width="375" height="679"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.66942590479999997" green="0.77464073899999997" blue="0.81343513730000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <textField opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Flight number" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pwL-cj-e6x">
-                                <rect key="frame" x="8" y="318" width="359" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetching data..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nh3-5X-XYy">
-                                <rect key="frame" x="112" y="606" width="150" height="12"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="m7j-vA-5s1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLm-5h-0dq">
-                                <rect key="frame" x="177" y="283" width="21" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="wpY-8a-Hfx">
-                                <rect key="frame" x="177" y="626" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="num-kt-Z2K">
-                                <rect key="frame" x="8" y="506" width="359" height="44"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="Search Flight">
-                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnSearchFlights:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8W9-a7-Y4B"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Departing Airport" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Kjg-MH-zNn" customClass="SearchTextField" customModule="SearchTextField">
-                                <rect key="frame" x="8" y="235" width="157" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="157" id="aJZ-ad-SG8"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYS-aT-Qd2">
-                                <rect key="frame" x="177.5" y="240" width="17.5" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Destination Airport" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kLF-2o-9FV" customClass="SearchTextField" customModule="SearchTextField">
-                                <rect key="frame" x="210" y="235" width="157" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="157" id="f0B-9H-baP"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="nh3-5X-XYy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="112" id="2FG-XZ-VY8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nh3-5X-XYy" secondAttribute="trailing" constant="113" id="2pU-Q7-MQ7"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FLm-5h-0dq" secondAttribute="trailing" constant="177" id="5sp-Kc-6qG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="num-kt-Z2K" secondAttribute="trailing" constant="8" id="6Cl-k6-QIZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kLF-2o-9FV" secondAttribute="trailing" constant="8" id="8Pg-hM-vlg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pwL-cj-e6x" secondAttribute="trailing" constant="8" id="9KD-37-vwe"/>
-                            <constraint firstItem="wpY-8a-Hfx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="177" id="9KS-Yi-Wo8"/>
-                            <constraint firstItem="nh3-5X-XYy" firstAttribute="top" secondItem="FLm-5h-0dq" secondAttribute="bottom" constant="300" id="9fL-O1-wEN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wpY-8a-Hfx" secondAttribute="trailing" constant="178" id="D1s-G7-f7j"/>
-                            <constraint firstItem="pwL-cj-e6x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="GBB-AR-DIc"/>
-                            <constraint firstItem="FLm-5h-0dq" firstAttribute="top" secondItem="dYS-aT-Qd2" secondAttribute="bottom" constant="20" id="Hfy-0X-Az4"/>
-                            <constraint firstItem="kLF-2o-9FV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="215" id="NRn-DS-kCP"/>
-                            <constraint firstItem="FLm-5h-0dq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="177" id="Ppf-wm-chV"/>
-                            <constraint firstItem="Kjg-MH-zNn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="215" id="SKK-mx-25S"/>
-                            <constraint firstItem="wpY-8a-Hfx" firstAttribute="top" secondItem="nh3-5X-XYy" secondAttribute="bottom" constant="8" id="VM2-of-lVt"/>
-                            <constraint firstItem="pwL-cj-e6x" firstAttribute="top" secondItem="FLm-5h-0dq" secondAttribute="bottom" constant="12" id="XF9-lY-aGw"/>
-                            <constraint firstItem="kLF-2o-9FV" firstAttribute="leading" secondItem="dYS-aT-Qd2" secondAttribute="trailing" constant="15" id="hRS-Hn-ccx"/>
-                            <constraint firstItem="num-kt-Z2K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="nuP-Or-bvc"/>
-                            <constraint firstItem="Kjg-MH-zNn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="rrG-zJ-ll5"/>
-                            <constraint firstItem="num-kt-Z2K" firstAttribute="top" secondItem="pwL-cj-e6x" secondAttribute="bottom" constant="158" id="uuk-7M-GpX"/>
-                            <constraint firstItem="dYS-aT-Qd2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="220" id="xgV-iw-fsg"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="c8W-Lk-vlP"/>
                     </view>
                     <connections>
-                        <outlet property="arrivingSearchTextField" destination="kLF-2o-9FV" id="00M-Kz-ANR"/>
-                        <outlet property="departingSearchTextField" destination="Kjg-MH-zNn" id="nbr-TN-ltc"/>
-                        <outlet property="flightNumberTextField" destination="pwL-cj-e6x" id="7hY-0X-IYY"/>
-                        <outlet property="indicator" destination="wpY-8a-Hfx" id="Unz-yS-ahL"/>
-                        <outlet property="lblData" destination="nh3-5X-XYy" id="5l5-1o-WUa"/>
-                        <segue destination="dFR-mu-1wo" kind="show" identifier="segueToFlightNumberVC" id="lYG-t9-SrM"/>
-                        <segue destination="umj-SK-g7O" kind="show" identifier="segueToFlightListVC" id="uBb-3b-H6u"/>
+                        <segue destination="7LH-q4-Ovg" kind="show" identifier="segueToApp" id="VtF-Ds-bhj"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G2V-XS-WSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-762.39999999999998" y="130.88455772113943"/>
+            <point key="canvasLocation" x="-993" y="747"/>
         </scene>
         <!--Flight ListTVC-->
         <scene sceneID="cLa-vs-p7y">
@@ -281,6 +178,51 @@
                                     <constraint firstItem="LgV-Hf-dcK" firstAttribute="top" secondItem="RmS-UR-1mU" secondAttribute="bottom" constant="12" id="zmN-t1-xrl"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for a flight" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nhe-ok-hEK" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="16" y="42" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="errorColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineErrorColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textErrorColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleErrorColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iconTypeValue">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -296,6 +238,7 @@
                         <viewLayoutGuide key="safeArea" id="60Q-wC-o3J"/>
                     </view>
                     <connections>
+                        <outlet property="flightInformationMenu" destination="hLG-wZ-5g9" id="DpO-Q9-1EQ"/>
                         <outlet property="imgArrow" destination="7xo-qW-KIK" id="M6S-6m-d5M"/>
                         <outlet property="lblAirline" destination="LgV-Hf-dcK" id="zs7-vR-cBd"/>
                         <outlet property="lblArrival" destination="t3o-dt-Qrb" id="VWc-zF-28j"/>
@@ -306,6 +249,7 @@
                         <outlet property="lblSpeed" destination="Z2d-H1-QQV" id="Ae4-p9-8yo"/>
                         <outlet property="lblStatus" destination="b7r-vj-HQF" id="EfE-jB-2pW"/>
                         <outlet property="myMap" destination="peW-m2-l39" id="R8I-LA-aVz"/>
+                        <outlet property="searchBar" destination="Nhe-ok-hEK" id="dde-Ks-O9Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hs1-1n-cOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -341,11 +285,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCZ-99-Afx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="517.60000000000002" y="901.79910044977521"/>
+            <point key="canvasLocation" x="830" y="902"/>
         </scene>
     </scenes>
     <resources>
-        <image name="airplane" width="4146" height="4320"/>
         <image name="arrow-3" width="89.279998779296875" height="45.360000610351562"/>
     </resources>
 </document>

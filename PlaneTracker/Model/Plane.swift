@@ -11,49 +11,25 @@ import Alamofire
 
 class Plane{
     //MARK: private properties
+    var depair : String!
+    var arrair: String!
+    var flightNumber: String!
+    var flightAirline: String!
+    var status: String!
+    var speed:  Int!
+    var latitude: Int!
+    var longitude: Int!
+    var altitude: Int!
     
-    private var depair : String!
-    private var arrair: String!
-    private var flightNumber: String!
-    private var flightAirline: String!
-    private var status: String!
-    private var speed:  Int!
-    private var latitude: Int!
-    private var longitude: Int!
-    private var altitude: Int!
-    private var airline: String!
-    
-    
-    func getPlaneInformation(url: String) {
-        
-        Alamofire.request(url).responseJSON { (response) in
-            
-            if response.result.isSuccess {
-                let result = response.result.value!
-                //print(result)
-                
-                // parsing the JSON ( = dictionary of dictionaries
-                if let myDict = result as? Dictionary<String, Any> {
-                    
-                    // flightNumber
-                    if let flight = myDict["flight"] as? [Dictionary<String,String>] {
-                        if let flight_flightNumber = flight[2]["number"]{
-                            self.flightNumber = flight_flightNumber
-                            print(flight_flightNumber)
-                        }
-                    }
-                    
-                    // flightAirline
-                    if let airline = myDict["airline"] as? [Dictionary<String,String>] {
-                        if let airline_code = airline[1]["icaoCode"]{
-                            self.flightAirline = airline_code
-                            print(airline_code)
-                        }
-                    }
-                } else {
-                    print("Error with request \(String(describing: response.result.error))")
-                }
-            }
-        }
+    init(depair : String, arrair : String, flightNumber : String, flightAirline : String, status : String, speed : Int, latitude : Int, longitude : Int, altitude : Int){
+        self.depair         = depair
+        self.arrair         = arrair
+        self.flightNumber   = flightNumber
+        self.flightAirline  = flightAirline
+        self.status         = status
+        self.speed          = speed
+        self.latitude       = latitude
+        self.longitude      = longitude
+        self.altitude       = altitude
     }
 }

@@ -9,11 +9,14 @@
 import UIKit
 
 class PageVC: UIPageViewController {
+    var planes : [Plane]!
+    var airports : [Airport]!
+    
     fileprivate lazy var pages: [UIViewController] = {
         return [
-            self.getViewController(withIdentifier: "flightNumberVC"),
-            self.getViewController(withIdentifier: "mapView"),
-            self.getViewController(withIdentifier: "listVC")
+            getViewController(withIdentifier: "flightNumberVC"),
+            getViewController(withIdentifier: "mapView"),
+            getViewController(withIdentifier: "listVC")
         ]
     }()
     

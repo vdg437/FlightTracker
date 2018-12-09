@@ -27,7 +27,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
         
-        // Do any additional setup after loading the view.
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -51,5 +50,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
      // Pass the selected object to the new view controller.
      }
      */
+    
+    // MARK: - Functions
+    
+    
     
 }

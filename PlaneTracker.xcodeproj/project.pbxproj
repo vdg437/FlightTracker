@@ -12,13 +12,13 @@
 		6D1D39AC21B0382600D5AA64 /* FlightNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D39AB21B0382600D5AA64 /* FlightNumberVC.swift */; };
 		6D1D39AE21B0560900D5AA64 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D39AD21B0560900D5AA64 /* MapVC.swift */; };
 		6D2443CD21B83D420069D231 /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2443CC21B83D420069D231 /* PageVC.swift */; };
+		6D2443D121B9B8C20069D231 /* LoadingVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2443D021B9B8C20069D231 /* LoadingVCViewController.swift */; };
 		6D80ADB021AAE6B500FA0450 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D80ADAF21AAE6B500FA0450 /* AppDelegate.swift */; };
 		6D80ADB221AAE6B500FA0450 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D80ADB121AAE6B500FA0450 /* ViewController.swift */; };
 		6D80ADB521AAE6B500FA0450 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D80ADB321AAE6B500FA0450 /* Main.storyboard */; };
 		6D80ADB821AAE6B500FA0450 /* PlaneTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D80ADB621AAE6B500FA0450 /* PlaneTracker.xcdatamodeld */; };
 		6D80ADBA21AAE6B600FA0450 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D80ADB921AAE6B600FA0450 /* Assets.xcassets */; };
 		6D80ADBD21AAE6B600FA0450 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D80ADBB21AAE6B600FA0450 /* LaunchScreen.storyboard */; };
-		6DE5086221AAE7A70063CBDF /* FindPlaneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5086121AAE7A70063CBDF /* FindPlaneVC.swift */; };
 		6DE5086421AAEB1C0063CBDF /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5086321AAEB1C0063CBDF /* Plane.swift */; };
 		6DED600521ABE811007C2861 /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DED600421ABE811007C2861 /* Airport.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +30,7 @@
 		6D1D39AB21B0382600D5AA64 /* FlightNumberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightNumberVC.swift; sourceTree = "<group>"; };
 		6D1D39AD21B0560900D5AA64 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		6D2443CC21B83D420069D231 /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
+		6D2443D021B9B8C20069D231 /* LoadingVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingVCViewController.swift; sourceTree = "<group>"; };
 		6D80ADAC21AAE6B500FA0450 /* PlaneTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaneTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D80ADAF21AAE6B500FA0450 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D80ADB121AAE6B500FA0450 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 		6D80ADB921AAE6B600FA0450 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D80ADBC21AAE6B600FA0450 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D80ADBE21AAE6B600FA0450 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DE5086121AAE7A70063CBDF /* FindPlaneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPlaneVC.swift; sourceTree = "<group>"; };
 		6DE5086321AAEB1C0063CBDF /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		6DED600421ABE811007C2861 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
 		70E63AF34F49665CCF61DE63 /* Pods_PlaneTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlaneTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,11 +110,11 @@
 		6DE5085F21AAE7310063CBDF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6DE5086121AAE7A70063CBDF /* FindPlaneVC.swift */,
 				6D1D39A721B02FC500D5AA64 /* FlightListTVC.swift */,
 				6D1D39AB21B0382600D5AA64 /* FlightNumberVC.swift */,
 				6D1D39AD21B0560900D5AA64 /* MapVC.swift */,
 				6D2443CC21B83D420069D231 /* PageVC.swift */,
+				6D2443D021B9B8C20069D231 /* LoadingVCViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -208,6 +208,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-PlaneTracker/Pods-PlaneTracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -216,6 +217,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,10 +255,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D80ADB221AAE6B500FA0450 /* ViewController.swift in Sources */,
+				6D2443D121B9B8C20069D231 /* LoadingVCViewController.swift in Sources */,
 				6D2443CD21B83D420069D231 /* PageVC.swift in Sources */,
 				6DED600521ABE811007C2861 /* Airport.swift in Sources */,
 				6D80ADB821AAE6B500FA0450 /* PlaneTracker.xcdatamodeld in Sources */,
-				6DE5086221AAE7A70063CBDF /* FindPlaneVC.swift in Sources */,
 				6D1D39AC21B0382600D5AA64 /* FlightNumberVC.swift in Sources */,
 				6D80ADB021AAE6B500FA0450 /* AppDelegate.swift in Sources */,
 				6D1D39A821B02FC500D5AA64 /* FlightListTVC.swift in Sources */,
