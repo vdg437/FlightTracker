@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import MapKit
 import SkyFloatingLabelTextField
+import CoreData
 
 class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -20,6 +21,9 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
     var planesUrl = "https://aviation-edge.com/v2/public/flights?key=30feff-e974a7&limit=10000"
     var airportUrl = "https://aviation-edge.com/v2/public/airportDatabase?key=30feff-e974a7&codeIataAirport="
     var locationManager = CLLocationManager()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let request : NSFetchRequest<Airport> = Airport.fetchRequest()
+    
     
     
     // MARK: - Outlet
@@ -60,6 +64,9 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
         
         let images: [UIImage] = [#imageLiteral(resourceName: "arrow-1"), #imageLiteral(resourceName: "arrow-2"), #imageLiteral(resourceName: "arrow-3")]
         imgArrow.image = UIImage.animatedImage(with: images, duration: 1)
+        
+        
+        //loadAirports()
     }
     
     // MARK: - Function
@@ -150,7 +157,7 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
                     let isoCode = item["codeIso2Country"].string
                     
                     if(nameAirport != nil  && codeIata != nil && country != nil && isoCode != nil){
-                        self.airports.append(Airport(name: nameAirport!, iataCode: codeIata!, country: country!, latitude: latitude, longitude: longitude, isoCode: isoCode!))
+                        //self.airports.append(Airport(name: nameAirport!, iataCode: codeIata!, country: country!, latitude: latitude, longitude: longitude, isoCode: isoCode!))
                     }
                     self.lblArrival.text = item["nameAirport"].string
                 }
@@ -305,6 +312,16 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
 //            self.mapView.addAnnotation(annotation)
 //        }
 //    }
+    
+    // MARK: - Model manipulation methods
+    
+    func loadAirport(with request : NSFetchRequest<Airport> = Airport.fetchRequest()){
+        do{
+            try airports = context.fetch(request)
+        }catch{
+            print("ERROR LOADING FORM DATABASE \(context)");
+        }
+    }
     
     
     /*
