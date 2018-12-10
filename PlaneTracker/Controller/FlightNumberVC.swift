@@ -66,7 +66,7 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
         imgArrow.image = UIImage.animatedImage(with: images, duration: 1)
         
         
-        //loadAirports()
+        loadAirports()
     }
     
     // MARK: - Function
@@ -85,10 +85,11 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
                         let flightNumber    = item["flight"]["iataNumber"].string!
                         let flightAirline   = item["airline"]["iataCode"].string!
                         let status          = item["status"].string!
-                        let speed           = item["speed"]["vertical"].intValue
+                        let speed           = item["speed"]["horizontal"].intValue
                         let latitude        = item["geography"]["latitude"].floatValue
                         let longitude       = item["geography"]["longitude"].floatValue
                         let altitude        = item["geography"]["altitude"].floatValue
+                        
                         
                         let plane = Plane(depair: depair, arrair: arrair, flightNumber: flightNumber, flightAirline: flightAirline, status: status, speed: speed, latitude: latitude, longitude: longitude, altitude: altitude)
                         
@@ -106,12 +107,13 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
         }
     }
     
+    // Box when clicked on an annotation
     func buildInfoBox(selectedFlight : Plane) {
         let arrivalCode = selectedFlight.arrair!
         let departureCode = selectedFlight.depair!
         
         lblFlightNumber.text = selectedFlight.flightNumber!
-        lblSpeed.text = String(selectedFlight.speed)
+        lblSpeed.text = String(selectedFlight.speed)+" km/h"
         lblAirline.text = selectedFlight.flightAirline
         
         
@@ -132,61 +134,16 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
             self.lblStatus.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
             self.lblStatus.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
-        getFlightAirportInfo(arrivalAirport: arrivalCode, departureAirport: departureCode)
+        getAirportDetail(iataCodeDep: departureCode, iataCodeArr: arrivalCode)
     }
     
-    
-    func getFlightAirportInfo(arrivalAirport: String, departureAirport: String){
-        getArrivalAirport(url: (airportUrl+arrivalAirport))
-        getDepartureAirport(url: (airportUrl+departureAirport))
-    }
-    
-    func getArrivalAirport(url: String){
-        print("+++++++++++++ Departure : \(url)")
-        Alamofire.request(url).responseJSON { (response) in
-            switch response.result {
-            case .success(let value):
-                let airportJson = JSON(value)
-                
-                for (_,item):(String, JSON) in airportJson {
-                    let nameAirport = item["nameAirport"].string
-                    let codeIata = item["codeIataAirport"].string
-                    let latitude = item["latitudeAirport"].doubleValue
-                    let longitude = item["longitudeAirport"].doubleValue
-                    let country = item["nameCountry"].string
-                    let isoCode = item["codeIso2Country"].string
-                    
-                    if(nameAirport != nil  && codeIata != nil && country != nil && isoCode != nil){
-                        //self.airports.append(Airport(name: nameAirport!, iataCode: codeIata!, country: country!, latitude: latitude, longitude: longitude, isoCode: isoCode!))
-                    }
-                    self.lblArrival.text = item["nameAirport"].string
-                }
-            case .failure(let error):
-                let alert = UIAlertController(title: "Internet connection failed", message: "We could not establish a connection to the server.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
-                self.present(alert, animated: true)
-                print(error)
+    func getAirportDetail(iataCodeDep: String, iataCodeArr: String){
+        airports.forEach {if($0.iataCode == iataCodeDep){
+            lblDeparture.text = $0.name
             }
-        }
-    }
-    
-    func getDepartureAirport(url: String){
-        print("+++++++++++++ Departure : \(url)")
-        Alamofire.request(url).responseJSON { (response) in
-            switch response.result {
-            case .success(let value):
-                let airportJson = JSON(value)
-                
-                for (_,item):(String, JSON) in airportJson {
-                    self.lblDeparture.text = item["nameAirport"].string
-                }
-            case .failure(let error):
-                let alert = UIAlertController(title: "Internet connection failed", message: "We could not establish a connection to the server.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
-                self.present(alert, animated: true)
-                print(error)
-            }
-        }
+            if($0.iataCode == iataCodeArr){
+                lblArrival.text = $0.name
+            }}
     }
     
     func setPlanePosition(plane : Plane){
@@ -232,22 +189,12 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
     func showRoute(plane : Plane){
         var locations = [CLLocationCoordinate2D]()
         
-        for airport in airports{
-            print(airports.count)
-        }
-        
-//        airports.forEach {
-//            print($0)
-//            print("Plane iataCode: \($0.iataCode) - \(plane.arrair)")
-//            if($0.iataCode == plane.arrair){
-//            locations.append(CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude))
-//            print("COORDINATES ROUTE Arrival: \($0.longitude) - \($0.latitude)")
-//            }
-//        }
+        airports.forEach {if($0.iataCode == plane.arrair){
+                locations.append(CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude))
+            }}
         
         airports.forEach {if($0.iataCode == plane.depair){
             locations.append(CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude))
-            print("COORDINATES ROUTE Departing: \($0.longitude) - \($0.latitude)")
             }}
         
         
@@ -281,6 +228,8 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
         for annotation in annotationsToShow{
             mapView.view(for: annotation)?.isHidden = false
         }
+        let overlays = mapView.overlays
+        mapView.removeOverlay(overlays[0])
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -315,11 +264,11 @@ class FlightNumberVCViewController: UIViewController, UITextFieldDelegate, MKMap
     
     // MARK: - Model manipulation methods
     
-    func loadAirport(with request : NSFetchRequest<Airport> = Airport.fetchRequest()){
+    func loadAirports(with request : NSFetchRequest<Airport> = Airport.fetchRequest()){
         do{
             try airports = context.fetch(request)
         }catch{
-            print("ERROR LOADING FORM DATABASE \(context)");
+            print("ERROR LOADING FROM DATABASE \(context)");
         }
     }
     

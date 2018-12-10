@@ -13,6 +13,7 @@
 		6D1D39AE21B0560900D5AA64 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1D39AD21B0560900D5AA64 /* MapVC.swift */; };
 		6D2443CD21B83D420069D231 /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2443CC21B83D420069D231 /* PageVC.swift */; };
 		6D2443D121B9B8C20069D231 /* LoadingVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2443D021B9B8C20069D231 /* LoadingVCViewController.swift */; };
+		6D41F61521BDD4CF004BB629 /* Airline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D41F61421BDD4CF004BB629 /* Airline.swift */; };
 		6D80ADB021AAE6B500FA0450 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D80ADAF21AAE6B500FA0450 /* AppDelegate.swift */; };
 		6D80ADB221AAE6B500FA0450 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D80ADB121AAE6B500FA0450 /* ViewController.swift */; };
 		6D80ADB521AAE6B500FA0450 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D80ADB321AAE6B500FA0450 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		6D1D39AD21B0560900D5AA64 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		6D2443CC21B83D420069D231 /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
 		6D2443D021B9B8C20069D231 /* LoadingVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingVCViewController.swift; sourceTree = "<group>"; };
+		6D41F61421BDD4CF004BB629 /* Airline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airline.swift; sourceTree = "<group>"; };
 		6D80ADAC21AAE6B500FA0450 /* PlaneTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaneTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D80ADAF21AAE6B500FA0450 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D80ADB121AAE6B500FA0450 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				6D80ADB621AAE6B500FA0450 /* PlaneTracker.xcdatamodeld */,
 				6DE5086321AAEB1C0063CBDF /* Plane.swift */,
 				6DD1680E21BDB73600B81239 /* Airport.swift */,
+				6D41F61421BDD4CF004BB629 /* Airline.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -219,6 +223,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -258,6 +263,7 @@
 				6D2443D121B9B8C20069D231 /* LoadingVCViewController.swift in Sources */,
 				6D2443CD21B83D420069D231 /* PageVC.swift in Sources */,
 				6D80ADB821AAE6B500FA0450 /* PlaneTracker.xcdatamodeld in Sources */,
+				6D41F61521BDD4CF004BB629 /* Airline.swift in Sources */,
 				6D1D39AC21B0382600D5AA64 /* FlightNumberVC.swift in Sources */,
 				6DD1680F21BDB73600B81239 /* Airport.swift in Sources */,
 				6D80ADB021AAE6B500FA0450 /* AppDelegate.swift in Sources */,

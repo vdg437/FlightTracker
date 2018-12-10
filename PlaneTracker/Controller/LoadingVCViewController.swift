@@ -11,11 +11,16 @@ import Alamofire
 import SearchTextField
 import SwiftyJSON
 import CoreData
+import UICircularProgressRing
 
 
 class LoadingVCViewController: UIViewController {
     
+    
+    @IBOutlet weak var progressBar: UIProgressView!
+    
     let allAirportsUrl = "https://aviation-edge.com/v2/public/airportDatabase?key=30feff-e974a7"
+    let airlinesUrl = "https://aviation-edge.com/v2/public/airlineDatabase?key=30feff-e974a7"
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var planesList = [Plane]()
@@ -24,6 +29,8 @@ class LoadingVCViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getAirport(url: allAirportsUrl)
+        progressBar.setProgress(0, animated: false)
+        showProgress()
     }
     
     
@@ -33,6 +40,7 @@ class LoadingVCViewController: UIViewController {
     
     // Requesting all available airports, returns json
     func getAirport(url: String) {
+        
         Alamofire.request(url).responseJSON { (response) in
             switch response.result {
             case .success(let value):
@@ -56,6 +64,49 @@ class LoadingVCViewController: UIViewController {
                         airport.name        = name
                         
                         self.airports.append(airport)
+                        self.saveAirports()
+                        
+                        if(i == 10050){
+                            self.performSegue(withIdentifier: "segueToApp", sender: nil)
+                        }
+                    }
+                    i = i+1
+                }
+                
+            case .failure(let error):
+                let alert = UIAlertController(title: "Internet connection failed", message: "We could not establish a connection to the server.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+                self.present(alert, animated: true)
+                print(error)
+            }
+        }
+    }
+    
+    func showProgress(){
+        UIView.animate(withDuration: 23.0) {
+            self.progressBar.setProgress(1.0, animated: true)
+        }
+    }
+    
+    // Get all available airlines
+    // Requesting all available airports, returns json
+    func getAirlines(url: String) {
+        Alamofire.request(url).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let airportsJson = JSON(value)
+                var i = 0
+                for (index,item):(String, JSON) in airportsJson {
+                    if(String(i) == index){
+                        let name        = item["nameAirline"].string!
+                        let iataCode    = item["codeIataAirline"].string!
+                        let country     = item["nameCountry"].string!
+                        
+                        let airline = Airline(context: self.context)
+                        airline.nameCountry     = country
+                        airline.codeIata    = iataCode
+                        airline.name        = name
+                        
                         self.saveAirports()
                         print(i)
                         if(i == 10050){

@@ -1,5 +1,5 @@
 //
-//  Airport.swift
+//  Airlines.swift
 //  PlaneTracker
 //
 //  Created by van der Goot Dave on 09/12/2018.
@@ -9,6 +9,6 @@
 import UIKit
 import CoreData
 
-class Airport: NSManagedObject{
+class Airline: NSManagedObject{
     
 }
